@@ -1,0 +1,37 @@
+# 安装elastic
+
+1.yum install elasticsearch
+
+2.修改配置文件 /etc/elasticsearch/elasticsearch.yml
+  遇到问题：
+  1.centos6: bootstrap.memory_lock: false
+  2.yum 安装，data目录权限问题,目录需要elasticsearch用户权限
+  3.max thread too low:/etc/security/limits.conf
+    elasticsearch  -  nofile  65536
+	elasticsearch  -  nprc  4096
+  4.system call
+    bootstrap.system_call_filter: false
+
+# 安装kibana
+
+1.yum install kibana
+
+
+# filebeat system module 时区问题
+  vi module/system/syslog/ingest/pipeline.json 增加timezone选项
+        {
+      "date": {
+        "field": "system.syslog.timestamp",
+        "target_field": "@timestamp",
+        "timezone": "Asia/Shanghai",
+        "formats": [
+          "MMM  d HH:mm:ss",
+          "MMM dd HH:mm:ss"
+        ],
+        "ignore_failure": true
+      }
+    }
+  ## 方法2 文件同上
+  processors:
+  - add_locale: ~
+  
