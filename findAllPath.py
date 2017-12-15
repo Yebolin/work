@@ -20,3 +20,7 @@ def uniquePath(m, n):
 assert uniquePath(1, 2) == 1
 assert uniquePath(3, 3) == 6
 assert uniquePath(10, 20) == 6906900
+
+print(uniquePath(2,4))
+print(uniquePath(4,2))
+print(uniquePath(5,5))
