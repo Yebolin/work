@@ -1,0 +1,12 @@
+# 简单的mysql监控
+
+## 缓存
+* 缓存未命中 mysql.status[Innodb_buffer_pool_reads]
+* 缓存请求 mysql.status[Innodb_buffer_pool_read_requests]
+* mysql.status[Innodb_buffer_pool_reads] / mysql.status[Innodb_buffer_pool_read_requests] < 0.05 未命中数量少于5%
+
+## qps
+* mysql.status[Questions] > 1000
+
+## thread
+* mysql.status[Threads_connected] > 900
